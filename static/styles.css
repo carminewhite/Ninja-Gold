@@ -8,13 +8,22 @@
     display: inline;
     margin-right: 20px;
 }
+.attempts-remaining {
+    margin-left: 650px;
+    display: inline;
+    font-size: 13pt;
+}
+
+.divshadow { box-shadow: 1px 2px 2px #888888;}
 
 .container {
     width: 972px;
-    border: 1px solid black;
+    border: 1px solid gray;
     margin: 0 auto;
     height: 630px;
     padding: 20px 0px 20px 20px;
+    background-color: rgb(164, 243, 239);
+    border-radius: 10px;
 
 }
 
@@ -28,8 +37,10 @@
     margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 30px;
-    border: 1px solid black;
+    border: 1px solid gray;
     text-align: center;
+    border-radius: 10px;
+    background-color: lightsteelblue;
 }
 
     .property input {
@@ -45,6 +56,49 @@
     width: 930px;
     height: 300px;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid gray;
+    font-size: 12pt;
+    background-color: white;
+    border-radius: 5px;
 }
 
+    .activites .loading {
+        color: gray;
+        font-style: italic;
+    }
+
+    .activities .casino-won {
+        color: green;
+    }
+    .activities .casino-lost {
+        color: red;
+    }
+
+.gameover {
+    width: 440px;
+    background-color: lightblue;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 80px;
+    padding: 20px;
+    height: 250px;
+}
+
+    .gameover h1 {
+        text-align: center;
+    }
+    .gameover p {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 18pt;
+    }
+
+    .gameover input {
+        padding: 15px;
+        margin-left: 160px;
+        margin-top: 50px;
+        background-color: green;
+        color: white;
+        text-align: center;
+        font-size: 16pt;
+    }

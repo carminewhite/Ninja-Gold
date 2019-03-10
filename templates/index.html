@@ -7,42 +7,74 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <div><p class="gold-count">Your Gold:</p>
-            <p class="gold-count">1000</p> <br>
-        </div>
-        <div class="property">
-            <h2>Farm</h2>
-            <p>(earns 10-20 golds</p>
-            <form method="POST">
-                <input type="button" value="Find Gold!">
-            </form>
-        </div>
-        <div class="property">
-            <h2>Cave</h2>
-            <p>(earns 5-10 golds</p>
-            <form method="POST">
-                <input type="button" value="Find Gold!">
-            </form>
-        </div>
-        <div class="property">
-            <h2>House</h2>
-            <p>(earns 2-5 golds</p>
-            <form method="POST">
-                <input type="button" value="Find Gold!">
-            </form>
-        </div>
-        <div class="property">
-            <h2>Casino</h2>
-            <p>(earns 0-50 golds</p>
-            <form method="POST">
-                <input type="button" value="Find Gold!">
-            </form>
-        </div>
-        <p>Activities</p>
-        <div class="activities">
+    <div class="container divshadow">
+        {% if attempt == 15 %}
+            <div class="gameover divshadow">
+                <h1>Game over</h1>
+                <p>Total Gold: {{ your_gold }}</p>
+                <p>Tries: {{ attempt }}</p>
 
-        </div>
+                <form action="/destroy_session" method="POST">
+                    <input type="submit" value="Play Again">
+                </form>
+            </div>
+        
+        {% else %}
+            <div><p class="gold-count">Your Gold:</p>
+                <p class="gold-count">{{ your_gold }}</p>
+                <p class="attempts-remaining">Attempts remaining: {{ 15 - attempt }}</p><br>
+                <p class="gold-count">Goal:  500</p>
+            
+
+            </div>
+            <div class="property divshadow">
+                <h2>Farm</h2>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_gold" method="POST">
+                    <input type="hidden" name="gold_name" value="farm">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="property divshadow">
+                <h2>Cave</h2>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_gold" method="POST">
+                    <input type="hidden" name="gold_name" value="cave">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="property divshadow">
+                <h2>House</h2>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_gold" method="POST">
+                    <input type="hidden" name="gold_name" value="house">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="property divshadow">
+                <h2>Casino</h2>
+                <p>(earns 0-50 golds)</p>
+                <form action="/process_gold" method="POST">
+                    <input type="hidden" name="gold_name" value="casino">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <p>Activities</p>
+            <div class="activities" style="overflow: auto">
+                {% for i in activity %}
+                    {% if i.gold >= 0 %}
+                        <p class="casino-won">Earned {{ i.gold }} golds from the {{ i.property }}!  ({{ i.timestamp }})</p>
+                    {% else %}
+                        <p class="casino-lost">Entered a casino and lost {{ i.gold }} golds... Ouch...  ({{ i.timestamp }})</p>
+                    {% endif %}
+                {% else %}
+                    <p class="loading">Waiting to find some gold...</p>
+                {% endfor %}
+            </div>
+            <form action="/destroy_session" method="POST">
+                <input type="submit" value="Play Again">
+            </form>
+        {% endif %}
         
 
 
