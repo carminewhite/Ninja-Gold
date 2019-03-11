@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container divshadow">
+        <h1>Ninja Gold</h1>
         {% if attempt == 15 %}
             <div class="gameover divshadow">
                 <h1>Game over</h1>
@@ -71,9 +72,9 @@
                     <p class="loading">Waiting to find some gold...</p>
                 {% endfor %}
             </div>
-            <form action="/destroy_session" method="POST">
+            <!-- <form action="/destroy_session" method="POST">
                 <input type="submit" value="Play Again">
-            </form>
+            </form> -->
         {% endif %}
         
 

@@ -20,11 +20,15 @@
     width: 972px;
     border: 1px solid gray;
     margin: 0 auto;
-    height: 630px;
+    height: 660px;
     padding: 20px 0px 20px 20px;
-    background-color: rgb(164, 243, 239);
+    /* background-color: rgb(164, 243, 239); */
     border-radius: 10px;
 
+}
+
+.container h1 {
+    text-align: center;
 }
 
 .property {
